@@ -175,6 +175,10 @@
 - name: Restart Vault if needed
   meta: flush_handlers
 
+- file:
+    path: "{{ vault_home }}/{{ ansible_ssh_user }}/.bashrc"
+    state: touch
+
 - name: Insert http(s) export in dotfile
   lineinfile: 
     path: "{{ vault_home }}/{{ ansible_ssh_user }}/.bashrc"
